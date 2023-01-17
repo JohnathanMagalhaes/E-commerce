@@ -9,6 +9,7 @@ namespace E_commerce.Models
         [Key]
         public int ID { get; set; }
 
+        [StringLength(100, MinimumLength = 10, ErrorMessage = "O tamanho máximo é {1} caracteres.")]
         [Required(ErrorMessage = "O nome do produto deve ser informado.")]
         [Display(Name = "Nome do Produto")]
         public string Nome { get; set; }
@@ -28,12 +29,18 @@ namespace E_commerce.Models
 
         [Required(ErrorMessage = "O valor do produto deve ser informado.")]
         [Display(Name = "Valor do Produto")]
+        [Column(TypeName = "decimal(10,2)")]
+        [Range(1, 19999.99, ErrorMessage = "O Preço deve estar entre 1 e 19.999,99")]
         public decimal Valor { get; set; }
 
         [Required(ErrorMessage = "Uma imagem do produto deve ser informado.")]
         [Display(Name = "Valor do Produto")]
-        public string imagem { get; set; }
+        public string ImagemUrl { get; set; }
+
+        [Display(Name = "Produto Favorito")]
         public bool ProdutoFavorito { get; set; }
+
+        [Display(Name = "Estoque")]
         public bool Status { get; set; }
 
         [Required(ErrorMessage = "O produto deve conter uma categoria.")]

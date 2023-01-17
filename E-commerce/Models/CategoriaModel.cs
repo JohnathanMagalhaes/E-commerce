@@ -9,6 +9,7 @@ namespace E_commerce.Models
         [Key]
         public int ID { get; set; }
 
+        [StringLength(60, MinimumLength = 10, ErrorMessage = "O tamanho máximo é {1} caracteres.")]
         [Required(ErrorMessage = "O nome da categoria deve ser informado.")]
         [Display(Name = "Nome da Categoria")]
         public string Nome { get; set; }
